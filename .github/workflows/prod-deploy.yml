@@ -1,0 +1,30 @@
+name: Deploy PROD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  deploy:
+
+    runs-on: self-hosted
+
+    environment:
+      name: Production
+
+    steps:
+
+      - uses: actions/checkout@v4
+
+      - name: Deploy PROD
+
+        shell: powershell
+
+        run: |
+
+          Copy-Item `
+          prod.html `
+          C:\Sites\PROD\index.html `
+          -Force
