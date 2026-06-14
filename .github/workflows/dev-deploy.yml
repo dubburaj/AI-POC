@@ -1,0 +1,27 @@
+name: Deploy DEV
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+
+  deploy:
+
+    runs-on: self-hosted
+
+    steps:
+
+      - uses: actions/checkout@v4
+
+      - name: Deploy DEV
+
+        shell: powershell
+
+        run: |
+
+          Copy-Item `
+          dev.html `
+          C:\Sites\DEV\index.html `
+          -Force
